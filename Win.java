@@ -1,12 +1,21 @@
 package com.mamytema;
 
+import com.mamytema.UI.GUI;
+import com.mamytema.commands.Cheats;
+
+import java.beans.IntrospectionException;
+import java.util.concurrent.TimeUnit;
+
 public class Win {
-    public static boolean check() {
+    public static void check() {
         for (Tile mine : Global.mineMap) {
-            if (!mine.isFlagged()) {
-                return false;
+            if (mine != null && !mine.isFlagged()) {
+                return;
             }
         }
-        return true;
+        Render.renderDescriptionText("You won!");
+        Global.gameEnded = true;
+        Cheats.showAll();
+
     }
 }

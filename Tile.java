@@ -34,14 +34,6 @@ public class Tile {
     }
     public boolean isFlagged() { return this.isFlagged; }
 
-    public int getPos(char axis) {
-        if (axis == 'x') {
-            return this.x;
-        } else {
-            return this.y;
-        }
-    }
-
     public void addMineNearby() {
         this.minesNear++;
     }
@@ -59,6 +51,11 @@ public class Tile {
         return this.type;
     }
 
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+
+    @Deprecated
     public char getCharCode() {
         if (isFlagged && Global.gameEnded && this.type.equals("mine")) {
             return 'X';
@@ -85,6 +82,33 @@ public class Tile {
             };
         }
         return 'o';
+    }
+    public String getImageCode() {
+        if (isFlagged && Global.gameEnded && this.type.equals("mine")) {
+            return "GoodFlag.png";
+        }
+        if (isFlagged && Global.gameEnded) {
+            return "BadFlag.png";
+        }
+        if (isFlagged) {
+            return "Flagged.png";
+        }
+        if (isVisible) {
+            return switch (type) {
+                case "space" -> "Tile.png";
+                case "one" -> "One.png";
+                case "two" -> "Two.png";
+                case "three" -> "Three.png";
+                case "four" -> "Four.png";
+                case "five" -> "Five.png";
+                case "six" -> "Six.png";
+                case "seven" -> "Seven.png";
+                case "eight" -> "Eight.png";
+                case "mine" -> "Mine.png";
+                default -> "Empty.png";
+            };
+        }
+        return "UndiscoveredTile.png";
     }
 
 

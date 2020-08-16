@@ -11,6 +11,6 @@ public class Cheats {
             }
         }
         Global.gameEnded = true;
-        Render.render();
+        Render.renderAllGUI();
     }
 }

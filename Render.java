@@ -1,10 +1,12 @@
 package com.mamytema;
 
+import javax.swing.*;
+
 public class Render {
     private static void makeLine() {
         System.out.println("- " + "- - ".repeat(Global.map.length));
     }
-
+    @Deprecated
     public static void render() {
         String[] outputList = new String[Global.map.length + 1];
         StringBuilder outputLine;
@@ -29,5 +31,27 @@ public class Render {
             System.out.println(output);
             makeLine();
         }
+    }
+
+    public static void renderAllGUI() {
+        for (int X = 0; X < Global.jButtonMap.length; X++) {
+            for (int Y = 0; Y < Global.jButtonMap[X].length; Y++) {
+
+                JButton button = Global.jButtonMap[X][Y];
+                ImageIcon image = Global.getImage( Global.map[X][Y].getImageCode() );
+                button.setIcon(image);
+
+            }
+        }
+    }
+
+    public static void renderTile(int X, int Y) {
+        JButton button = Global.jButtonMap[X][Y];
+        ImageIcon image = Global.getImage( Global.map[X][Y].getImageCode());
+        button.setIcon(image);
+    }
+
+    public static void renderDescriptionText(String text) {
+        Global.description.setText(text);
     }
 }

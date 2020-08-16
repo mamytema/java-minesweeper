@@ -7,8 +7,8 @@ public class SpaceChecker {
 
     public static final String SPACE = "space";
 
-    public static boolean checkTile(String[] arguments) {
-        Tile checkTile = Global.map[Integer.parseInt(arguments[1])][Integer.parseInt(arguments[2])];
+    public static boolean checkTile(int x, int y) {
+        Tile checkTile = Global.map[x][y];
         ArrayList<Tile> checkedTiles = new ArrayList<>();
         if (!checkTile.getType().equals(SPACE)) return false;
         checkedTiles.add(checkTile);
@@ -34,7 +34,7 @@ public class SpaceChecker {
 
                 if (neighbor == null) continue;
                 if (neighbor.getType().equals(SPACE)) {
-                    if (checkedTiles.size() < 100) {
+                    if (checkedTiles.size() < 2500) {
                         if (!checkedTiles.contains(neighbor)) {
                             checkedTiles.add(neighbor);
                             amountOfNeighbors++;
@@ -45,7 +45,7 @@ public class SpaceChecker {
                 neighbor.makeVisible();
             }
         }
-        System.out.println(amountOfNeighbors);
+        Render.renderAllGUI();
         return false;
     }
 }

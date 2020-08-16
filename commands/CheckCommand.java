@@ -1,24 +1,26 @@
 package com.mamytema.commands;
 
 import com.mamytema.*;
+import com.mamytema.UI.GUI;
+
+import java.util.concurrent.TimeUnit;
 
 public class CheckCommand {
     public static final String SPACE = "space";
     public static final String MINE = "mine";
 
-    public static boolean check(String[] arguments) {
-        Tile checkTile = Global.map[Integer.parseInt(arguments[1])][Integer.parseInt(arguments[2])];
+    public static boolean check(int x, int y) {
+        Tile checkTile = Global.map[x][y];
 
         if (checkTile.getType().equals(SPACE)) {
-            SpaceChecker.checkTile(arguments);
-            Render.render();
+            SpaceChecker.checkTile(x, y);
         } else if (checkTile.getType().equals(MINE)) {
-            System.out.println("You loose!");
+            Render.renderDescriptionText("You loose!");
             Cheats.showAll();
+            Render.renderAllGUI();
             return true;
         } else {
-            TileChecker.checkTile(arguments);
-            Render.render();
+            TileChecker.checkTile(x, y);
         }
 
         return false;

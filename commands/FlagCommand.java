@@ -3,27 +3,28 @@ package com.mamytema.commands;
 import com.mamytema.*;
 
 public class FlagCommand {
-    public static boolean flag(String[] arguments) {
+    public static void flag(int x, int y) {
         if (Global.flagsLeft == 0 ) {
-            System.out.println("Out of flags.");
-            return false;
+            Render.renderDescriptionText("Out of flags.");
+            return;
         }
-        Tile checkTile = Global.map[Integer.parseInt(arguments[1])][Integer.parseInt(arguments[2])];
+        if (Global.map[x][y].isVisible()) {
+            Render.renderDescriptionText("You can't flag a visible tile.");
+            return;
+        }
+        Tile checkTile = Global.map[x][y];
         checkTile.flag();
         Global.flagsLeft--;
-        Render.render();
-        System.out.println("You have " + Global.flagsLeft + " flags left to place.");
-        return false;
+        Render.renderDescriptionText("You have " + Global.flagsLeft + " flags left to place.");
+        Render.renderTile(x, y);
     }
-    public static boolean unFlag(String[] arguments) {
-        Tile checkTile = Global.map[Integer.parseInt(arguments[1])][Integer.parseInt(arguments[2])];
-        if (checkTile.isFlagged()) {
-            System.out.println("Already flagged tile.");
-            return false;
+    public static void unFlag(int x, int y) {
+        Tile checkTile = Global.map[x][y];
+        if (!checkTile.isFlagged()) {
+            return;
         }
         checkTile.unFlag();
         Global.flagsLeft++;
-        Render.render();
-        return false;
+        Render.renderTile(x, y);
     }
 }
