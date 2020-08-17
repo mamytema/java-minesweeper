@@ -21,6 +21,7 @@ public class Generator {
         }
     }
 
+    @Deprecated
     public static void generateMines() {
         int mineIndex = 0;
         for (int i = 0; i < Global.mineAmount; i++) {
@@ -34,6 +35,36 @@ public class Generator {
             mineIndex++;
         }
     }
+
+    public static void generateMinesAndIgnore(int ignoreX, int ignoreY) {
+        int mineIndex = 0;
+        MineLoop:
+        for (int i = 0; i < Global.mineAmount; i++) {
+            int x = Global.randomInt(0, Global.sizeX - 1);
+            int y = Global.randomInt(0, Global.sizeY - 1);
+
+            if (Global.map[x][y] == Global.map[ignoreX][ignoreY]) {
+                i--;
+                continue;
+            }
+            if (Global.map[x][y].getType().equals(MINE)) {
+                i--;
+                continue;
+            }
+
+            for (Tile neighbor : Global.map[x][y].getNeighbors()) {
+                if (neighbor == Global.map[ignoreX][ignoreY]) {
+                    i--;
+                    continue MineLoop;
+                }
+            }
+
+            Global.map[x][y].setType(MINE);
+            Global.mineMap[mineIndex] = Global.map[x][y];
+            mineIndex++;
+        }
+    }
+
 
     public static void generateGrid() {
 

@@ -3,28 +3,28 @@ package com.mamytema;
 import com.mamytema.UI.GUI;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static final String CUSTOMIZE = "cus";
+
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("start-start or cus-customize");
+        System.out.print("Enter to quick start or cus to customize");
         String command = sc.nextLine();
-        switch(command) {
-            case "cus":
-                System.out.print("Size X: ");
-                Global.sizeX = sc.nextInt();
-                System.out.print("Size Y: ");
-                Global.sizeY = sc.nextInt();
-                System.out.print("Mines amount: ");
-                Global.mineAmount = sc.nextInt();
-                System.out.print("Flag amount (must be atleast amount to mines to be playable): ");
-                Global.flagsLeft = sc.nextInt();
-                break;
+
+        if (command.equals(CUSTOMIZE)) {
+            System.out.print("Size X: ");
+            Global.sizeX = sc.nextInt();
+            System.out.print("Size Y: ");
+            Global.sizeY = sc.nextInt();
+            System.out.print("Mines amount: ");
+            Global.mineAmount = sc.nextInt();
+            System.out.print("Flag amount (must be atleast amount to mines to be playable): ");
+            Global.flagsLeft = sc.nextInt();
         }
         System.out.println("Starting GUI, a window should pop up.");
 
@@ -33,10 +33,8 @@ public class Main {
         Global.jButtonMap = new JButton[Global.sizeX][Global.sizeY];
 
         Generator.generateGrid();
-        Generator.generateMines();
-        Generator.generateNumberGrid();
 
-        GUI gui = new GUI();
+        new GUI();
 
 
     }

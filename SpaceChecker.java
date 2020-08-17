@@ -1,20 +1,16 @@
 package com.mamytema;
 
 import java.util.ArrayList;
-import com.mamytema.commands.*;
 
 public class SpaceChecker {
 
     public static final String SPACE = "space";
 
-    public static boolean checkTile(int x, int y) {
-        Tile checkTile = Global.map[x][y];
+    private static ArrayList<Tile> checkTilesNeighbors(Tile checkTile) {
         ArrayList<Tile> checkedTiles = new ArrayList<>();
-        if (!checkTile.getType().equals(SPACE)) return false;
-        checkedTiles.add(checkTile);
-
-        checkTile.makeVisible();
         Tile[] checkedTileNeighbors = checkTile.getNeighbors();
+
+        checkedTiles.add(checkTile);
 
         for (Tile neighbor : checkedTileNeighbors) {
 
@@ -27,7 +23,10 @@ public class SpaceChecker {
                 checkedTiles.add(neighbor);
             }
         }
-        int amountOfNeighbors = 0;
+        return checkedTiles;
+    }
+
+    private static void checkNeighborNeighbors(ArrayList<Tile> checkedTiles) {
         for (int tile = 0; tile < checkedTiles.size(); tile++) {
             Tile[] checkedTilesNeighbors = checkedTiles.get(tile).getNeighbors();
             for (Tile neighbor : checkedTilesNeighbors) {
@@ -37,7 +36,6 @@ public class SpaceChecker {
                     if (checkedTiles.size() < 2500) {
                         if (!checkedTiles.contains(neighbor)) {
                             checkedTiles.add(neighbor);
-                            amountOfNeighbors++;
                         }
                     }
                 }
@@ -45,7 +43,20 @@ public class SpaceChecker {
                 neighbor.makeVisible();
             }
         }
+    }
+
+    public static void checkTile(int x, int y) {
+        Tile checkTile = Global.map[x][y];
+        if (!checkTile.getType().equals(SPACE)) {
+            return;
+        }
+
+        checkTile.makeVisible();
+
+        ArrayList<Tile> checkedTiles = checkTilesNeighbors(checkTile);
+
+        checkNeighborNeighbors(checkedTiles);
+
         Render.renderAllGUI();
-        return false;
     }
 }
