@@ -1,4 +1,4 @@
-package com.mamytema;
+package minesweeper;
 
 import java.util.ArrayList;
 

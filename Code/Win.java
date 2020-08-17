@@ -1,6 +1,5 @@
-package com.mamytema;
-
-import com.mamytema.commands.Cheats;
+package minesweeper;
+import minesweeper.commands.Cheats;
 
 public class Win {
     public static void check() {

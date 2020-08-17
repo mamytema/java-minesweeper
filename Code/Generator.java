@@ -1,4 +1,4 @@
-package com.mamytema;
+package minesweeper;
 
 public class Generator {
     public static final String MINE = "mine";

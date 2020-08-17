@@ -1,10 +1,7 @@
-package com.mamytema.UI;
+package minesweeper.UI;
 
-import com.mamytema.Generator;
-import com.mamytema.Global;
-import com.mamytema.Render;
-import com.mamytema.Win;
-import com.mamytema.commands.*;
+import minesweeper.*;
+import minesweeper.commands.*;
 
 public class Button {
 

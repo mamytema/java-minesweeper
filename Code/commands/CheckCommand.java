@@ -1,6 +1,6 @@
-package com.mamytema.commands;
+package minesweeper.commands;
 
-import com.mamytema.*;
+import minesweeper.*;
 
 public class CheckCommand {
     public static final String SPACE = "space";

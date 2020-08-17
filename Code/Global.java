@@ -1,6 +1,9 @@
-package com.mamytema;
+package minesweeper;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 
 public class Global {
 
@@ -22,7 +25,7 @@ public class Global {
     public static JLabel description;
     public static JButton[][] jButtonMap;
 
-    public static String assetsPath = "src\\com\\mamytema\\assets\\";
+    public static String assetsPath = "./assets/";
 
     public static ImageIcon getImage(String file) {
         return new ImageIcon(assetsPath + file);

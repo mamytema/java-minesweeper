@@ -1,6 +1,6 @@
-package com.mamytema.UI;
+package minesweeper.UI;
 
-import com.mamytema.Global;
+import minesweeper.*;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

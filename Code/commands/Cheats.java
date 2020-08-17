@@ -1,7 +1,6 @@
-package com.mamytema.commands;
+package minesweeper.commands;
 
-import com.mamytema.Global;
-import com.mamytema.Render;
+import minesweeper.*;
 
 public class Cheats {
     public static void showAll() {

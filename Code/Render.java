@@ -1,4 +1,4 @@
-package com.mamytema;
+package minesweeper;
 
 import javax.swing.*;
 

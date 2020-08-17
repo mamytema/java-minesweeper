@@ -1,6 +1,6 @@
-package com.mamytema.commands;
+package minesweeper.commands;
 
-import com.mamytema.*;
+import minesweeper.*;
 
 public class FlagCommand {
     public static void flag(int x, int y) {
