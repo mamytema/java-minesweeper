@@ -7,7 +7,7 @@ public class Difficulties {
 
 
     public static void veryEasyEvent() {
-        Generator.generateGame(9, 9, 12, 3);
+        Generator.generateGame(9, 9, 10, 3);
         Generator.generateGrid();
         StartScreen.close();
         new GUI();
