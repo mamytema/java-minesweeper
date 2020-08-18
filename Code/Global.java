@@ -15,6 +15,7 @@ public class Global {
     public static int sizeY = 10;
     public static int mineAmount = 15;
     public static int flagsLeft = 15;
+    public static int maxMinesPerTile = 3;
 
     public static boolean gameEnded = false;
     public static boolean gameStarted = false;

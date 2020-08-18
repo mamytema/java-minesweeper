@@ -1,4 +1,4 @@
-package minesweeper.UI;
+package minesweeper.UI.mainScreen;
 
 import minesweeper.*;
 import minesweeper.commands.*;
@@ -15,6 +15,7 @@ public class Button {
 
     private void startGame() {
         Generator.generateMinesAndIgnore(x, y);
+        Generator.removeUnusedMines();
         Generator.generateNumberGrid();
         Render.renderDescriptionText("Right click to flag mines.");
     }

@@ -1,7 +1,20 @@
 package minesweeper;
 
+import javax.swing.*;
+
 public class Generator {
     public static final String MINE = "mine";
+
+    public static void generateGame(int sizeX, int sizeY, int mines, int maxMinesPerTile) {
+        Global.sizeX = sizeX;
+        Global.sizeY = sizeY;
+        Global.mineAmount = mines;
+        Global.flagsLeft = mines;
+        Global.maxMinesPerTile = maxMinesPerTile;
+        Global.map = new Tile[Global.sizeX][Global.sizeY];
+        Global.mineMap = new Tile[Global.mineAmount];
+        Global.jButtonMap = new JButton[Global.sizeX][Global.sizeY];
+    }
 
     public static void generateNumberGrid() {
         for (int X = 0; X < Global.map.length; X++) {
@@ -40,6 +53,7 @@ public class Generator {
         int mineIndex = 0;
         MineLoop:
         for (int i = 0; i < Global.mineAmount; i++) {
+
             int x = Global.randomInt(0, Global.sizeX - 1);
             int y = Global.randomInt(0, Global.sizeY - 1);
 
@@ -47,6 +61,7 @@ public class Generator {
                 i--;
                 continue;
             }
+
             if (Global.map[x][y].getType().equals(MINE)) {
                 i--;
                 continue;
@@ -65,6 +80,25 @@ public class Generator {
         }
     }
 
+    public static void removeUnusedMines() {
+        for (int x = 0; x < Global.map.length; x++) {
+            for (int y = 0; y < Global.map[x].length; y++) {
+
+                int minesAround = 0;
+
+                for (Tile tile : Global.map[x][y].getNeighbors()) {
+
+                    if (tile.getType().equals(MINE)) {
+                        if (minesAround == Global.maxMinesPerTile) {
+                            tile.setType("space");
+                        } else {
+                            minesAround++;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public static void generateGrid() {
 

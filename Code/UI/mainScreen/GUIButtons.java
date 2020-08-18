@@ -1,4 +1,4 @@
-package minesweeper.UI;
+package minesweeper.UI.mainScreen;
 
 import minesweeper.*;
 

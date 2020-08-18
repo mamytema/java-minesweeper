@@ -1,4 +1,4 @@
-package minesweeper.UI;
+package minesweeper.UI.mainScreen;
 
 import minesweeper.*;
 
@@ -24,6 +24,7 @@ public class GUI extends JFrame {
         Global.description = description;
     }
 
+
     public GUI()  {
 
         mainFrame = new JFrame("Minesweeper");
@@ -41,6 +42,7 @@ public class GUI extends JFrame {
         mainFrame.setLocation(300,200);
         mainFrame.setIconImage(Global.getImage("appImage.png").getImage());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         createDescriptionLabel();
         GUIButtons.createButtonsGrid(gridPanel);
