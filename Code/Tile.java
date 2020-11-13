@@ -16,7 +16,7 @@ public class Tile {
     private boolean yPlusAvailable = false;
     private boolean checkedNeighborAvailability = false;
 
-    public static final Tile PLACEHOLDERTILE = new Tile(-1, -1, "placeholder");
+    public static final Tile PLACEHOLDER = new Tile(-1, -1, "placeholder");
 
     public Tile(int x, int y, String type) {
         this.x = x;
@@ -166,7 +166,7 @@ public class Tile {
 
         for (int neighborIndex = 0; neighborIndex < neighbors.length; neighborIndex++) {
             if (neighbors[neighborIndex] == null) {
-                neighbors[neighborIndex] = PLACEHOLDERTILE;
+                neighbors[neighborIndex] = PLACEHOLDER;
             }
         }
 

@@ -27,7 +27,7 @@ public class GUI extends JFrame {
 
     public GUI()  {
 
-        mainFrame = new JFrame("Minesweeper v.1.2 " + Global.difficulty);
+        mainFrame = new JFrame("Minesweeper v.1.3 " + Global.difficulty);
 
         GridLayout grid = new GridLayout(Global.sizeX, Global.sizeY);
 

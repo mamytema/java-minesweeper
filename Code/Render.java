@@ -46,6 +46,7 @@ public class Render {
     }
 
     public static void renderTile(int X, int Y) {
+        Win.check();
         JButton button = Global.jButtonMap[X][Y];
         ImageIcon image = Global.getImage( Global.map[X][Y].getImageCode());
         button.setIcon(image);
